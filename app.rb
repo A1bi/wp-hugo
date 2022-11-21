@@ -26,8 +26,8 @@ posts.each do |post|
   FileUtils.mkdir_p(post_path)
 
   images = []
-  content_html.root.xpath('//a').each_with_index do |image, i|
-    url = image['href']
+  content_html.root.xpath('//a[img]|//img[contains(@class, "size-full")]').each_with_index do |el, i|
+    url = el[el.name == 'a' ? 'href' : 'src']
     ext = File.extname(url)
     filename = "image#{i + 1}#{ext}"
     path = "#{post_path}/#{filename}"
