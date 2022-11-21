@@ -15,6 +15,7 @@ posts = xml.root.xpath('channel/item')
 posts.each do |post|
   title = post.xpath('title').text
   slug = title.parameterize
+  author = post.xpath('dc:creator').text.capitalize
   pub_date = DateTime.parse(post.xpath('pubDate').text)
   content = post.xpath('content:encoded').text
   content_html = Nokogiri::HTML(content)
