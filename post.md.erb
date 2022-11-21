@@ -1,0 +1,13 @@
+---
+title: <%= title %>
+slug: <%= slug %>
+date: <%= pub_date.iso8601 %>
+draft: false
+<%- if images.any? -%>
+thumbnail: <%= images.first %>
+<%- end -%>
+---
+
+<%=- content -%>
+
+{{< gallery >}}
